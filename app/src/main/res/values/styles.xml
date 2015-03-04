@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/NovoBar</item>
+
+    </style>
+
+    <style name="NovoBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/bar_background</item>
+    </style>
+
+</resources>
