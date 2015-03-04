@@ -42,9 +42,9 @@ public class ParseResponseWebAPI {
                 String denominazione = item.getString("Denominazione");
 
                 Prospect prospect = new Prospect();
-                prospect.Denominazione = item.getString("Denominazione");
-                prospect.CAP = item.getString("CAP");
-                prospect.Comune = item.getString("Comune");
+                prospect.setDenominazione(item.getString("Denominazione"));
+                prospect.setCAP(item.getString("CAP"));
+                prospect.setComune(item.getString("Comune"));
 
                 prospectsList.add(prospect);
             }

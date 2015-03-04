@@ -1,6 +1,7 @@
 package com.novomatic.applicationfragment5;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 
@@ -60,9 +60,11 @@ public class Info extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view){
 
-        String value = edittext.getText().toString();
+        FragmentManager fragmentManager = getFragmentManager();
 
-        Toast.makeText(view.getContext(),"test ok", Toast.LENGTH_LONG).show();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, Prospects.newInstance())
+                .commit();
 
     }
 

@@ -12,11 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MenuArrayAdapter extends ArrayAdapter<NovoMenuItem> {
+public class ProspectArrayAdapter extends ArrayAdapter<Prospect> {
     private final Context context;
-    private final NovoMenuItem[] values;
+    private final Prospect[] values;
 
-    public MenuArrayAdapter(Context context, NovoMenuItem[] values) {
+    public ProspectArrayAdapter(Context context, Prospect[] values) {
         super(context, R.layout.prospect_item, values);
         this.context = context;
         this.values = values;
@@ -34,8 +34,8 @@ public class MenuArrayAdapter extends ArrayAdapter<NovoMenuItem> {
         TextView secondLine = (TextView) rowView.findViewById(R.id.secondLine);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
-        firstLine.setText(values[position].Nome);
-        secondLine.setText(values[position].Icona);
+        firstLine.setText(values[position].getDenominazione());
+        secondLine.setText(values[position].getDenominazione());
 
         return rowView;
     }

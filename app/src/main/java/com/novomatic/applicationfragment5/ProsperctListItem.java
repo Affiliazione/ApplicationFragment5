@@ -5,13 +5,13 @@ import java.security.PublicKey;
 /**
  * Created by fpirazzi on 27/02/2015.
  */
-public class NovoMenuItem {
+public class ProsperctListItem {
 
-    public NovoMenuItem(){
+    public ProsperctListItem(){
 
     }
 
-    public NovoMenuItem(String nome, String icona ){
+    public ProsperctListItem(String nome, String icona){
         this.Nome = nome;
         this.Icona = icona;
     }

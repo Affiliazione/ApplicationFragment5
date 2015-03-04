@@ -186,28 +186,10 @@ public class Login extends Fragment implements View.OnClickListener {
 
                     JSONObject profile = reader.getJSONObject("Profile");
 
-                    JSONArray prospects =  reader.optJSONArray("Prospects");
-
-                    ArrayList<Prospect> prospectsList = new ArrayList<Prospect>();
-
-                    for (int i = 0; i < prospects.length(); i++){
-
-                        JSONObject item = prospects.getJSONObject(i);
-                        String denominazione = item.getString("Denominazione");
-
-                        Prospect prospect = new Prospect();
-                        prospect.Denominazione = item.getString("Denominazione");
-                        prospect.CAP = item.getString("CAP");
-                        prospect.Comune = item.getString("Comune");
-
-                        prospectsList.add(prospect);
-                    }
-
-
                     StoreManager storeManager = new StoreManager();
                     storeManager.SaveData(mActivity.getBaseContext(),appResponse);
 
-                    postResult = "Eseguito";
+                    postResult = String.valueOf(response.getStatusLine().getStatusCode());
 
 
                 }else {
