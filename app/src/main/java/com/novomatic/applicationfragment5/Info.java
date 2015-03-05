@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -42,6 +43,12 @@ public class Info extends Fragment implements View.OnClickListener {
         ParseResponseWebAPI parseResponseWebAPI = new ParseResponseWebAPI(jsonMessage);
 
         ArrayList<Prospect> prospects = parseResponseWebAPI.GetProspects();
+        Profile profile = parseResponseWebAPI.GetProfile();
+
+
+        TextView textView = (TextView) rootView.findViewById(R.id.textView_profile_name);
+
+        textView.setText(profile.getNome() + " " + profile.getCognome());
 
         Button buttonInfo = (Button) rootView.findViewById(R.id.button_info);
 

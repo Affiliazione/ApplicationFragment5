@@ -1,5 +1,7 @@
 package com.novomatic.applicationfragment5;
 
+import android.renderscript.Int3;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,10 +15,12 @@ public class ParseResponseWebAPI {
 
     private String jsonMessagge;
     private ArrayList<Prospect> prospectsList;
+    private Profile profile;
 
     public ParseResponseWebAPI(String jsonMessagge){
 
         prospectsList = new ArrayList<Prospect>();
+        profile = new Profile();
         this.jsonMessagge = jsonMessagge;
         Parse();
     }
@@ -32,9 +36,17 @@ public class ParseResponseWebAPI {
 
             String versione = (String) apk.get("versione");
 
-            JSONObject profile = reader.getJSONObject("Profile");
+            JSONObject JSONprofile = reader.getJSONObject("Profile");
+
+            profile.setNome(JSONprofile.getString("Nome"));
+            profile.setCognome(JSONprofile.getString("Cognome"));
+            profile.setIntermediarioId(Integer.parseInt(JSONprofile.getString("IntermediarioId")));
+            profile.setUserID(Integer.parseInt(JSONprofile.getString("UserID")));
+
 
             JSONArray prospects =  reader.optJSONArray("Prospects");
+
+
 
             for (int i = 0; i < prospects.length(); i++){
 
@@ -42,11 +54,22 @@ public class ParseResponseWebAPI {
                 String denominazione = item.getString("Denominazione");
 
                 Prospect prospect = new Prospect();
+
+                JSONArray listaContratti =  reader.optJSONArray("ListaContratti");
+                int contratti = listaContratti.length();
+                prospect.setContratti(contratti);
+
+                prospect.setProspectID(Integer.parseInt(item.getString("ProspectID")));
+                prospect.setIntermediario_id(Integer.parseInt(item.getString("intermediario_id")));
                 prospect.setDenominazione(item.getString("Denominazione"));
                 prospect.setCAP(item.getString("CAP"));
                 prospect.setComune(item.getString("Comune"));
+                prospect.setTelefono(item.getString("Telefono"));
+                prospect.setnCivico("NCivico");
 
-                prospectsList.add(prospect);
+                if (profile.getIntermediarioId() == prospect.getIntermediario_id()) {
+                    prospectsList.add(prospect);
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -55,8 +78,11 @@ public class ParseResponseWebAPI {
     }
 
     public ArrayList<Prospect> GetProspects(){
-
         return prospectsList;
+    }
+
+    public Profile GetProfile(){
+        return profile;
     }
 
 

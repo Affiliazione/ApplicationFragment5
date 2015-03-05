@@ -8,7 +8,8 @@
     </style>
 
     <style name="NovoBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/bar_background</item>
+        <item name="android:background">#fff</item>
+        <item name="android:actionMenuTextColor">#000</item>
     </style>
 
 </resources>

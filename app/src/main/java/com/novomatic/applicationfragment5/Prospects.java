@@ -67,9 +67,6 @@ public class Prospects extends Fragment implements View.OnClickListener {
             }
         });
 
-        //Button b = (Button) rootView.findViewById(R.id.btnTest);
-        //b.setOnClickListener(this);
-
         return rootView;
     }
 
