@@ -17,6 +17,7 @@ public class Prospect {
     private String codice;
     private int indirizzo_id;
     private int contratti;
+    private String indirizzo;
 
     public boolean isMaster() {
         return isMaster;
@@ -112,5 +113,13 @@ public class Prospect {
 
     public void setContratti(int contratti) {
         this.contratti = contratti;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
     }
 }

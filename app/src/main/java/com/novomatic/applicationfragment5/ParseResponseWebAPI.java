@@ -43,29 +43,28 @@ public class ParseResponseWebAPI {
             profile.setIntermediarioId(Integer.parseInt(JSONprofile.getString("IntermediarioId")));
             profile.setUserID(Integer.parseInt(JSONprofile.getString("UserID")));
 
-
             JSONArray prospects =  reader.optJSONArray("Prospects");
-
-
 
             for (int i = 0; i < prospects.length(); i++){
 
-                JSONObject item = prospects.getJSONObject(i);
-                String denominazione = item.getString("Denominazione");
+                JSONObject jsonProspect = prospects.getJSONObject(i);
+                String denominazione = jsonProspect.getString("Denominazione");
 
                 Prospect prospect = new Prospect();
 
-                JSONArray listaContratti =  reader.optJSONArray("ListaContratti");
+                JSONArray listaContratti =  jsonProspect.optJSONArray("listaContratti");
+
                 int contratti = listaContratti.length();
                 prospect.setContratti(contratti);
 
-                prospect.setProspectID(Integer.parseInt(item.getString("ProspectID")));
-                prospect.setIntermediario_id(Integer.parseInt(item.getString("intermediario_id")));
-                prospect.setDenominazione(item.getString("Denominazione"));
-                prospect.setCAP(item.getString("CAP"));
-                prospect.setComune(item.getString("Comune"));
-                prospect.setTelefono(item.getString("Telefono"));
-                prospect.setnCivico("NCivico");
+                prospect.setProspectID(Integer.parseInt(jsonProspect.getString("ProspectID")));
+                prospect.setIntermediario_id(Integer.parseInt(jsonProspect.getString("intermediario_id")));
+                prospect.setDenominazione(jsonProspect.getString("Denominazione"));
+                prospect.setCAP(jsonProspect.getString("CAP"));
+                prospect.setComune(jsonProspect.getString("Comune"));
+                prospect.setTelefono(jsonProspect.getString("Telefono"));
+                prospect.setnCivico(jsonProspect.getString("NCivico"));
+                prospect.setIndirizzo(jsonProspect.getString("indirizzo"));
 
                 if (profile.getIntermediarioId() == prospect.getIntermediario_id()) {
                     prospectsList.add(prospect);

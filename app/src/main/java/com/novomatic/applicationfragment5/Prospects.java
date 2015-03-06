@@ -3,6 +3,7 @@ package com.novomatic.applicationfragment5;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class Prospects extends Fragment implements View.OnClickListener {
         prospectsArray = prospects.toArray(prospectsArray);
 
         ProspectArrayAdapter adapter = new ProspectArrayAdapter(this.getActivity().getBaseContext(),prospectsArray);
+
         listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +68,7 @@ public class Prospects extends Fragment implements View.OnClickListener {
 
             }
         });
+
 
         return rootView;
     }

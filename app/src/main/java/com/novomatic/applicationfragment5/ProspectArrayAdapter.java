@@ -5,12 +5,15 @@ package com.novomatic.applicationfragment5;
  */
 
 import android.content.Context;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.concurrent.Callable;
 
 public class ProspectArrayAdapter extends ArrayAdapter<Prospect> {
     private final Context context;
@@ -35,7 +38,15 @@ public class ProspectArrayAdapter extends ArrayAdapter<Prospect> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
         firstLine.setText(values[position].getDenominazione());
-        secondLine.setText(values[position].getDenominazione());
+        secondLine.setText(values[position].getIndirizzo());
+
+        int contratti = values[position].getContratti();
+
+        if (contratti > 0){
+            imageView.setImageResource(R.drawable.ic_action_paste);
+        }else {
+            imageView.setImageResource(R.drawable.ic_action_new_label);
+        }
 
         return rowView;
     }
